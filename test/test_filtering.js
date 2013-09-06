@@ -1,3 +1,5 @@
+(function() {
+
 QUnit.module("contacts filtering");
 
 QUnit.asyncTest("filtering by initials", function() {
@@ -25,3 +27,5 @@ function extractNames(items) {
 	});
 	return Array.prototype.slice.call(names);
 }
+
+}());
