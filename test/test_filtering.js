@@ -9,22 +9,27 @@ var module = QUnit.module,
 
 "use strict";
 
-module("contacts filtering");
+module("contacts filtering", {
+	setup: function() {
+		this.contacts = $("ul.contacts");
+		createFilterWidget(this.contacts);
+	}
+});
 
 asyncTest("filtering by initials", function() {
 	expect(3);
 
-	var contacts = $("ul.contacts");
 	var filterField = $("input[type=search]");
 
 	strictEqual(filterField.length, 1);
-	var names = extractNames(contacts.find("li:visible"));
+	var names = extractNames(this.contacts.find("li:visible"));
 	deepEqual(names, ["Jake Archibald", "Christian Heilmann",
 			"John Resig", "Nicholas Zakas"]);
 
 	filterField.val("J").trigger("keyup");
+	var self = this;
 	setTimeout(function() {
-		var names = extractNames(contacts.find("li:visible"));
+		var names = extractNames(self.contacts.find("li:visible"));
 		deepEqual(names, ["Jake Archibald", "John Resig"]);
 		start();
 	}, 500);
