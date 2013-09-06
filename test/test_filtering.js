@@ -1,5 +1,7 @@
 (function() {
 
+"use strict";
+
 QUnit.module("contacts filtering");
 
 QUnit.asyncTest("filtering by initials", function() {
