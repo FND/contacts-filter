@@ -1,6 +1,8 @@
 QUnit.module("contacts filtering");
 
-QUnit.test("filtering by initials", function() {
+QUnit.asyncTest("filtering by initials", function() {
+	QUnit.expect(3);
+
 	var contacts = jQuery("ul.contacts");
 	var filterField = jQuery("input[type=search]");
 
@@ -10,8 +12,11 @@ QUnit.test("filtering by initials", function() {
 			"John Resig", "Nicholas Zakas"]);
 
 	filterField.val("J").trigger("keyup");
-	var names = extractNames(contacts.find("li:visible"));
-	QUnit.deepEqual(names, ["Jake Archibald", "John Resig"]);
+	setTimeout(function() {
+		var names = extractNames(contacts.find("li:visible"));
+		QUnit.deepEqual(names, ["Jake Archibald", "John Resig"]);
+		QUnit.start();
+	}, 500);
 });
 
 function extractNames(items) {
