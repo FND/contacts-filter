@@ -1,6 +1,7 @@
 (function($) {
 
 var module = QUnit.module,
+	test = QUnit.test,
 	asyncTest = QUnit.asyncTest,
 	expect = QUnit.expect,
 	strictEqual = QUnit.strictEqual,
@@ -14,20 +15,24 @@ module("contacts filtering", {
 		this.fixtures = $("#qunit-fixture");
 		this.contacts = $("ul.contacts", this.fixtures);
 		createFilterWidget(this.contacts);
+		this.filterField = $("input[type=search]", this.fixtures);
+		this.checkbox = $("input:checkbox", this.fixtures);
 	}
 });
 
+test("initialization", function() {
+	strictEqual(this.filterField.length, 1);
+	strictEqual(this.checkbox.length, 1);
+});
+
 asyncTest("filtering by initials", function() {
-	expect(3);
+	expect(2);
 
-	var filterField = $("input[type=search]", this.fixtures);
-
-	strictEqual(filterField.length, 1);
 	var names = extractNames(this.contacts.find("li:visible"));
 	deepEqual(names, ["Jake Archibald", "Christian Heilmann",
 			"John Resig", "Nicholas Zakas"]);
 
-	filterField.val("J").trigger("keyup");
+	this.filterField.val("J").trigger("keyup");
 	var self = this;
 	setTimeout(function() {
 		var names = extractNames(self.contacts.find("li:visible"));
