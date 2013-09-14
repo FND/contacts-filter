@@ -23,6 +23,7 @@ module("contacts filtering", {
 test("initialization", function() {
 	strictEqual(this.filterField.length, 1);
 	strictEqual(this.checkbox.length, 1);
+	strictEqual(this.checkbox.prop("checked"), false);
 });
 
 asyncTest("filtering by initials", function() {
@@ -38,6 +39,28 @@ asyncTest("filtering by initials", function() {
 		var names = extractNames(self.contacts.find("li:visible"));
 		deepEqual(names, ["Jake Archibald", "John Resig"]);
 		start();
+	}, 500);
+});
+
+asyncTest("case sensitivity", function() {
+	expect(2);
+	var self = this;
+
+	var assertContactCount = function(count) {
+		var names = extractNames(self.contacts.find("li:visible"));
+		deepEqual(names.length, count);
+	};
+
+	this.filterField.val("j").trigger("keyup");
+	setTimeout(function() {
+		assertContactCount(2);
+
+		self.checkbox.prop("checked", true).trigger("change");
+		setTimeout(function() {
+			assertContactCount(0);
+
+			start();
+		}, 500);
 	}, 500);
 });
 
