@@ -14,7 +14,7 @@ module("contacts filtering", {
 	setup: function() {
 		this.fixtures = $("#qunit-fixture");
 		this.contacts = $("ul.contacts", this.fixtures);
-		createFilterWidget(this.contacts);
+		CONTACTSFILTER(this.contacts);
 		this.filterField = $("input[type=search]", this.fixtures);
 		this.checkbox = $("input:checkbox", this.fixtures);
 	}
