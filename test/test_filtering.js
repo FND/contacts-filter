@@ -11,7 +11,8 @@ var module = QUnit.module,
 
 module("contacts filtering", {
 	setup: function() {
-		this.contacts = $("ul.contacts");
+		this.fixtures = $("#qunit-fixture");
+		this.contacts = $("ul.contacts", this.fixtures);
 		createFilterWidget(this.contacts);
 	}
 });
@@ -19,7 +20,7 @@ module("contacts filtering", {
 asyncTest("filtering by initials", function() {
 	expect(3);
 
-	var filterField = $("input[type=search]");
+	var filterField = $("input[type=search]", this.fixtures);
 
 	strictEqual(filterField.length, 1);
 	var names = extractNames(this.contacts.find("li:visible"));
