@@ -1,4 +1,9 @@
+/*jslint vars: true, browser: true, white: true */
+/*global CONTACTSFILTER, jQuery, QUnit */
+
 (function($) {
+
+"use strict";
 
 var module = QUnit.module,
 	test = QUnit.test,

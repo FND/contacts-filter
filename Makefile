@@ -1,10 +1,13 @@
-.PHONY: test dependencies
+.PHONY: test lint dependencies
 
 jquery_version = 2.0.3
 qunit_version = 1.12.0
 
 download = \
 	curl --output $(1) --time-cond $(1) --remote-time $(2)
+
+lint:
+	jslint-reporter `find {scripts,test} -type f -name "*.js"`
 
 dependencies:
 	mkdir -p extlib
