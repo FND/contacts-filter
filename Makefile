@@ -6,6 +6,9 @@ qunit_version = 1.12.0
 download = \
 	curl --output $(1) --time-cond $(1) --remote-time $(2)
 
+test:
+	phantomjs test/extlib/phantomjs-qunit-runner.js test/index.html
+
 lint:
 	jslint-reporter `find {scripts,test} -type f -name "*.js"`
 
