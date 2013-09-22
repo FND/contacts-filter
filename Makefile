@@ -4,8 +4,7 @@ jquery_version = 2.0.3
 qunit_version = 1.12.0
 blanket_version = 1.1.5
 
-download = \
-	curl --output $(1) --time-cond $(1) --remote-time $(2)
+download = curl --output $(1) --time-cond $(1) --remote-time $(2)
 
 test:
 	@set -o pipefail && \

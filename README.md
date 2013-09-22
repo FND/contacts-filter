@@ -9,3 +9,6 @@ former to the latter
 
 the implementation is not intended to be perfect, but merely to highlight
 significant structural aspects for education purposes
+
+demo: http://fnd.github.io/contacts-filter/
+test suite: http://fnd.github.io/contacts-filter/test/
