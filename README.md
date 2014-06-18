@@ -12,3 +12,10 @@ significant structural aspects for education purposes
 
 * demo: http://fnd.github.io/contacts-filter/
 * test suite: http://fnd.github.io/contacts-filter/test/
+
+
+Getting Started
+---------------
+
+* install [Bower](http://bower.io)
+* `npm install` and `bower install` downloads third-party components
