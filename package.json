@@ -1,5 +1,5 @@
 {
 	"devDependencies": {
-		"node-qunit-phantomjs": "~0.2.1"
+		"node-qunit-phantomjs": "~1.2.2"
 	}
 }
